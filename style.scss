@@ -21,24 +21,24 @@
   background: #f8fafc;
 }
 
-.container{
-  .top{
+.container {
+  .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5rem .75rem;
-    h4{
+    padding: 0.5rem 0.75rem;
+    h4 {
       font-size: 20px;
       font-weight: 500;
       color: #334155;
     }
-    span{
+    span {
       display: block;
       color: #94a3b8;
       font-weight: 400;
     }
   }
-  .bottom{
+  .bottom {
     position: relative;
     input {
       width: 300px;
@@ -49,10 +49,11 @@
       caret-color: #fff;
       //caret-color: #cbd5e1;
       font-size: 22px;
-      padding: .75rem 1rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
       //letter-spacing: 2px;
     }
-    .cursor{
+    .cursor {
       top: 50%;
       left: 15px;
       //left: calc(100% - 1.5rem);
@@ -66,14 +67,14 @@
       border-radius: 1rem;
       height: 30px;
       overflow: hidden;
-      
+
       .check {
         width: 20px;
         flex-shrink: 0;
         transform: scale(0);
       }
 
-      .progress{
+      .progress {
         position: absolute;
         width: 150%;
         left: 50%;
@@ -85,3 +86,13 @@
   }
 }
 
+.letters {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  span {
+    color: #18181b;
+    font-size: 22px;
+    font-weight: 400;
+  }
+}

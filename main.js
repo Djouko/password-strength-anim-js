@@ -7,6 +7,7 @@ const input = document.querySelector("input");
 const cursor = document.querySelector(".cursor");
 const progress = document.querySelector(".progress");
 const check = document.querySelector(".check");
+const letters = document.querySelector(".letters");
 const lengthSpan = document.querySelector(".top span");
 
 let completed = false;
@@ -14,20 +15,33 @@ let completed = false;
 input.addEventListener("input", (e) => {
   const inputText = input.value;
 
+  // console.log(inputText)
+
+  letters.innerHTML = "";
+  for (let index = 0; index < inputText.length; index++) {
+    if (inputText.length <= 10) {
+      const element = inputText[index];
+      const span = document.createElement("span");
+      span.innerText = element;
+      letters.appendChild(span);
+    }
+  }
+
   if (completed) {
     completed = false;
-    gsap.to(cursor, {
-      width: "7px",
-      left: "15px",
-      background: "#cbd5e1",
-      ease: "none",
-      duration: 0.3,
-    });
+    const tl = gsap.timeline();
     gsap.to(check, {
       scale: 0,
       opacity: 0,
       duration: 0.3,
       ease: "none",
+    });
+    gsap.to(cursor, {
+      width: "7px",
+      left: letters.offsetWidth + 22 + "px",
+      background: "#cbd5e1",
+      ease: "none",
+      duration: 0.3,
     });
   }
 
@@ -56,8 +70,8 @@ input.addEventListener("input", (e) => {
 
   //
 
-  const cursorLeft = inputText.length * 10;
-  cursor.style.left = cursorLeft + 15 + "px";
+
+  cursor.style.left = letters.offsetWidth + 22 + "px";
 
   //
 
@@ -67,6 +81,10 @@ input.addEventListener("input", (e) => {
   lengthSpan.textContent = input.value.length + "/10";
 });
 
-input.addEventListener('select', function() {
-  this.selectionStart = this.selectionEnd;
-}, false);
+input.addEventListener(
+  "select",
+  function () {
+    this.selectionStart = this.selectionEnd;
+  },
+  false
+);
